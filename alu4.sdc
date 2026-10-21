@@ -16,12 +16,18 @@ set_input_delay -clock clk -max 3.000 [get_ports {opcode[*]}]
 set_input_delay -clock clk -min 1.000 [get_ports {opcode[*]}]
 
 # 3. Output delays relative to clk
-# NOTE: alu4 has no alu_out/overflow/zero ports; y/led_out/beat are the real outputs.
+# NOTE: alu4 has no alu_out port; y/led_out/beat plus zero/overflow are the real outputs.
 set_output_delay -clock clk -max 3.000 [get_ports {y[*]}]
 set_output_delay -clock clk -min 1.000 [get_ports {y[*]}]
 
 set_output_delay -clock clk -max 3.000 [get_ports {cout}]
 set_output_delay -clock clk -min 1.000 [get_ports {cout}]
+
+set_output_delay -clock clk -max 3.000 [get_ports {zero}]
+set_output_delay -clock clk -min 1.000 [get_ports {zero}]
+
+set_output_delay -clock clk -max 3.000 [get_ports {overflow}]
+set_output_delay -clock clk -min 1.000 [get_ports {overflow}]
 
 set_output_delay -clock clk -max 3.000 [get_ports {led_out[*]}]
 set_output_delay -clock clk -min 1.000 [get_ports {led_out[*]}]
